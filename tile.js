@@ -1,7 +1,6 @@
 module.exports = class Tile {
-    constructor(tpl, row, col, rot, def) {
-        if (def) this.t = def;
-
+    constructor(tpl, row, col, rot, dft) {
+        if (dft) this.t = dft;
         else
             switch (rot) {
                 case 0:
