@@ -1,12 +1,15 @@
 // n: size of tile side
 // o: overlap of tiles
-function createTiles(n = 3, o = 1) {
+function makeTiles(tpl, n = 3, o = 1) {
     let tiles = [];
 
-    for (let i = 0; i < base.length - (n - o); i += o)
-        for (let j = 0; j < base.length - (n - o); j += o)
-            try { tiles.push(new Tile(base, i, j)) }
-            catch (error) { }
+    console.log(...tpl.flatten())
+
+    for (let i = 0; i < tpl.length - (n - o); i += o)
+        for (let j = 0; j < tpl.length - (n - o); j += o)
+            for (let r = 0; r < 4; r++)
+                try { tiles.push(new Tile(tpl, i, j, r)) }
+                catch (error) { }
 
     return tiles;
 }

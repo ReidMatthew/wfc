@@ -1,25 +1,38 @@
 module.exports = class Tile {
-    constructor(base, row, col) {
-        this.r0 = [
-            [base[row][col], base[row][col + 1], base[row][col + 2]],
-            [base[row + 1][col], base[row + 1][col + 1], base[row + 1][col + 2]],
-            [base[row + 2][col], base[row + 2][col + 1], base[row + 2][col + 2]]
-        ];
-        this.r1 = [
-            [base[row + 2][col], base[row + 1][col], base[row][col]],
-            [base[row + 2][col + 1], base[row + 1][col + 1], base[row][col + 1]],
-            [base[row + 2][col + 2], base[row + 1][col + 2], base[row][col + 2]]
-        ];
-        this.r2 = [
-            [base[row + 2][col + 2], base[row + 2][col + 1], base[row + 2][col]],
-            [base[row + 1][col + 2], base[row + 1][col + 1], base[row + 1][col]],
-            [base[row][col + 2], base[row][col + 1], base[row][col]]
-        ];
-        this.r3 = [
-            [base[row][col + 2], base[row + 1][col + 2], base[row + 2][col + 2]],
-            [base[row][col + 1], base[row + 1][col + 1], base[row + 2][col + 1]],
-            [base[row][col], base[row + 1][col], base[row + 2][col]]
-        ];
+    constructor(tpl, row, col, rot, def) {
+        if (def) this.t = def;
+
+        else
+            switch (rot) {
+                case 0:
+                    this.t = [
+                        [tpl[row][col], tpl[row][col + 1], tpl[row][col + 2]],
+                        [tpl[row + 1][col], tpl[row + 1][col + 1], tpl[row + 1][col + 2]],
+                        [tpl[row + 2][col], tpl[row + 2][col + 1], tpl[row + 2][col + 2]]
+                    ];
+                    break;
+                case 1:
+                    this.t = [
+                        [tpl[row + 2][col], tpl[row + 1][col], tpl[row][col]],
+                        [tpl[row + 2][col + 1], tpl[row + 1][col + 1], tpl[row][col + 1]],
+                        [tpl[row + 2][col + 2], tpl[row + 1][col + 2], tpl[row][col + 2]]
+                    ];
+                    break;
+                case 2:
+                    this.t = [
+                        [tpl[row + 2][col + 2], tpl[row + 2][col + 1], tpl[row + 2][col]],
+                        [tpl[row + 1][col + 2], tpl[row + 1][col + 1], tpl[row + 1][col]],
+                        [tpl[row][col + 2], tpl[row][col + 1], tpl[row][col]]
+                    ];
+                    break;
+                case 3:
+                    this.t = [
+                        [tpl[row][col + 2], tpl[row + 1][col + 2], tpl[row + 2][col + 2]],
+                        [tpl[row][col + 1], tpl[row + 1][col + 1], tpl[row + 2][col + 1]],
+                        [tpl[row][col], tpl[row + 1][col], tpl[row + 2][col]]
+                    ];
+                    break;
+            }
     }
 
     getSide(sideNumber) {
