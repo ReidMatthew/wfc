@@ -1,3 +1,5 @@
+var Tile = require('./tile');
+
 // n: size of tile side
 // o: overlap of tiles
 function makeTiles(tpl, n = 3, o = 1) {
