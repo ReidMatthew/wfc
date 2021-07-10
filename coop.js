@@ -4,7 +4,8 @@ module.exports = class Coop {
         this.row = row;
         this.col = col;
         this.tStates = tStates;
+        this.neighbor = [];
     }
 
-    
+
 }

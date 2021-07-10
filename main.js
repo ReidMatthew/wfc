@@ -15,4 +15,4 @@ const template = [
     [0, 1, 0, 0, 0]];
 
 let f = new Field(10,helper.makeTiles(template,3));
-console.log(f.f);
+console.log(f.coops[0][0].neighbor);
