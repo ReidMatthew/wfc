@@ -18,17 +18,18 @@ module.exports = class Field {
     setCoopNeighboors() {
         this.coops.forEach((a, i) => {
             a.forEach((coop, j) => {
-                try { coop.neighboor.push(this.coops[i][j]) }
-                catch (e) { coop.neighboor.push('') }
 
-                try { coop.neighboor.push(this.coops[i][j]) }
-                catch (e) { coop.neighboor.push('') }
+                try { coop.neighbor.push(this.coops[i-1][j] || '') }
+                catch (e) { coop.neighbor.push('') }
 
-                try { coop.neighboor.push(this.coops[i][j]) }
-                catch (e) { coop.neighboor.push('') }
+                try { coop.neighbor.push(this.coops[i][j+1] || '') }
+                catch (e) { coop.neighbor.push('') }
 
-                try { coop.neighboor.push(this.coops[i][j]) }
-                catch (e) { coop.neighboor.push('') }
+                try { coop.neighbor.push(this.coops[i+1][j] || '') }
+                catch (e) { coop.neighbor.push('') }
+
+                try { coop.neighbor.push(this.coops[i][j-1] || '') }
+                catch (e) { coop.neighbor.push('') }
             })
         });
     }
