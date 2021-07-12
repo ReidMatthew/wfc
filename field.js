@@ -7,6 +7,22 @@ module.exports = class Field {
         this.setCoopNeighboors();
     }
 
+    collapseLowwestEntrepy() {
+        if (!this.coops[0] || !this.coops[0][0])
+            return;
+
+        let lowestEntrepy = this.coops[0][0];
+
+        this.copps.forEach(a => {
+            a.forEach(c => {
+                if (c.enterpy < lowestEntrepy)
+                    lowestEntrepy = c;
+            })
+        });
+
+        // do the collapsy boi
+    }
+
     initCoops(size, tState) {
         for (let i = 0; i < size; i++) {
             this.coops[i] = [];
@@ -18,17 +34,16 @@ module.exports = class Field {
     setCoopNeighboors() {
         this.coops.forEach((a, i) => {
             a.forEach((coop, j) => {
-
-                try { coop.neighbor.push(this.coops[i-1][j] || '') }
+                try { coop.neighbor.push(this.coops[i - 1][j] || '') }
                 catch (e) { coop.neighbor.push('') }
 
-                try { coop.neighbor.push(this.coops[i][j+1] || '') }
+                try { coop.neighbor.push(this.coops[i][j + 1] || '') }
                 catch (e) { coop.neighbor.push('') }
 
-                try { coop.neighbor.push(this.coops[i+1][j] || '') }
+                try { coop.neighbor.push(this.coops[i + 1][j] || '') }
                 catch (e) { coop.neighbor.push('') }
 
-                try { coop.neighbor.push(this.coops[i][j-1] || '') }
+                try { coop.neighbor.push(this.coops[i][j - 1] || '') }
                 catch (e) { coop.neighbor.push('') }
             })
         });

@@ -5,7 +5,12 @@ module.exports = class Coop {
         this.col = col;
         this.tStates = tStates;
         this.neighbor = [];
+        this.entrepy = tStates.length;
     }
 
+    setEntrepy() {
 
+    }
+
+    collapse
 }
